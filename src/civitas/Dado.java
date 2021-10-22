@@ -33,7 +33,8 @@ public class Dado {
     }
     
     int quienEmpieza (int n){
-        return random.nextInt(0,n);
+        ultimoResultado = random.nextInt(0,n);
+        return ultimoResultado;
     }
     
     void setDebug (boolean d){

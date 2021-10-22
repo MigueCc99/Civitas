@@ -37,7 +37,7 @@ public class MazoSorpresas {
     }
     
     Sorpresa siguiente (){
-        Sorpresa s = new Sorpresa();
+        Sorpresa s = new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Sorpresa Por Defecto", 0);
         if(!barajada && usadas == sorpresas.size()){
             if(!debug){
                 shuffle(sorpresas);

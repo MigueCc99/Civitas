@@ -9,11 +9,13 @@ import java.util.ArrayList;
 public class Civitas {
 
     public static void main(String[] args) {
-        ArrayList<Integer> valores = new ArrayList<Integer>();
-        valores.add(0);
-        valores.add(0);
-        valores.add(0);
-        valores.add(0);
+        ArrayList<Integer> valores = new ArrayList<Integer>(){{
+        add(0);
+        add(0);
+        add(0);
+        add(0);
+        }};
+
         int valor = 0;
         //Dado.getInstance().setDebug(true);
         Tablero tablero = new Tablero();
@@ -68,7 +70,8 @@ public class Civitas {
         System.out.println("Precio medio de las calles: " + precioMedioCalles);
         
         System.out.println("\nPrueba de la clase Diario!!!");
-        System.out.println("*********************************************************************************");        
+        System.out.println("*********************************************************************************");   
+        Diario.getInstance().ocurreEvento("Prueba de la clase Diario");
         System.out.println(Diario.getInstance().leerEvento());
         
         System.out.println("\nComprobación de tiradas de dado y correcto cálculo de posición!!!");
@@ -77,12 +80,13 @@ public class Civitas {
         int posActual = 0;
             System.out.println(tirada);
             System.out.println(posActual);
-        for(int i=0; i<20; i++){
+        for(int i=0; i<10; i++){
             tirada = Dado.getInstance().tirar();
             System.out.println(tirada);
             tablero.nuevaPosicion(posActual, tirada);
             System.out.println(posActual);
-        }     
+        }
+    
     }
     
 }
