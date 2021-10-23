@@ -17,7 +17,7 @@ public class Civitas {
         }};
 
         int valor = 0;
-        //Dado.getInstance().setDebug(true);
+        Dado.getInstance().setDebug(true);
         Tablero tablero = new Tablero();
         
         for(int i=0; i<100; i++){
