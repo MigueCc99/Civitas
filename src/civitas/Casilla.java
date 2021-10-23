@@ -176,4 +176,23 @@ public class Casilla {
         
         return str;
     }
+    
+    public static void main(String[] args){
+        /*
+            1. Creamos una casilla de tipo DESCANSO
+            2. Creamos un par de casillas de tipo CALLE
+            3. Creamos una casilla de tipo SORPRESA
+        */
+        Casilla casillaDescanso = new Casilla("DESCANSO");
+        
+        Casilla casillaCalle1 = new Casilla ("Calle San Matías", 15000, 10000, 5000);
+        Casilla casillaCalle2 = new Casilla ("Calle Gran Vía", 20000, 7500, 3400);   
+        
+        Casilla casillaSorpresa = new Casilla ("Sorpresa 1", new MazoSorpresas());
+        
+        System.out.println(casillaDescanso.toString());
+        System.out.println(casillaCalle1.toString());
+        System.out.println(casillaCalle2.toString());
+        System.out.println(casillaSorpresa.toString());
+    }
 }

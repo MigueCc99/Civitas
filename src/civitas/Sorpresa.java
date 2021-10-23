@@ -38,10 +38,31 @@ public class Sorpresa {
     }
     
     private void informe (int actual, ArrayList<Jugador> todos){
-        Diario.getInstance().ocurreEvento("La sorpresa " + texto + " se ha apliado al jugador " + todos.get(actual).getNombre());
+        Diario.getInstance().ocurreEvento("La sorpresa " + texto + " se ha aplicado al jugador " + todos.get(actual).getNombre());
     }
     
     public String toString (){
         return texto; 
+    }
+    
+    public static void main(String[] args){
+        /*
+            1. Creamos un Jugador
+            2. Creamos Sorpresas
+            3. Aplicamos Sorpresas al jugador
+        */
+        Jugador jugador = new Jugador("Miguel Ángel");
+        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        jugadores.add(jugador);
+        Sorpresa sorpresaPagarCobrar = new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", 500);
+        
+        System.out.println("toString de Jugador");
+        System.out.println(jugador.toString());
+        System.out.println("toString de Sorpresa");
+        System.out.println(sorpresaPagarCobrar.toString());
+        
+        sorpresaPagarCobrar.aplicarAJugador(0, jugadores);
+        System.out.println(Diario.getInstance().getEventos().get(0));
+
     }
 }

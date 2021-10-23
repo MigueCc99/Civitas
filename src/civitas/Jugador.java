@@ -35,12 +35,16 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     int cantidadCasasHoteles (){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");  
+        int cantidad = 0;
+        for(Casilla propiedad: propiedades){
+            cantidad += propiedad.cantidadCasasHoteles();
+        }
+        return cantidad;
     }
     
     @Override
     public int compareTo (Jugador otro){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");  
+        return Float.compare(this.saldo, otro.saldo);
     }
     
     boolean comprar (Casilla titulo){
@@ -163,6 +167,28 @@ public class Jugador implements Comparable<Jugador> {
             str += ", ¿Puede Comprar?: No, ";
                      
         return str;
+    }
+    
+    public static void main(String[] args){
+        /*
+            1. Creamos un Jugador
+            2. Creamos un Jugador Copia
+        */
+        Jugador jugador = new Jugador("Miguel Ángel");
+        Jugador jugadorCopia = new Jugador(jugador);
+        
+        System.out.println(jugador.toString());
+        System.out.println(jugadorCopia.toString());
+        
+        int compare = jugador.compareTo(jugadorCopia);
+        if(compare > 0){
+            System.out.println("El jugador " + jugador.getNombre() + " es mayor que el jugador " + jugadorCopia.getNombre());
+        }
+        else if(compare < 0){
+            System.out.println("El jugador " + jugador.getNombre() + " es menor que el jugador " + jugadorCopia.getNombre());
+        }else{
+            System.out.println("El jugador " + jugador.getNombre() + " es igual que el jugador " + jugadorCopia.getNombre());
+        }
     }
     
 }
