@@ -41,6 +41,7 @@ public class Sorpresa {
         Diario.getInstance().ocurreEvento("La sorpresa " + texto + " se ha aplicado al jugador " + todos.get(actual).getNombre());
     }
     
+    @Override
     public String toString (){
         return texto; 
     }
