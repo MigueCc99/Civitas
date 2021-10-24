@@ -48,15 +48,67 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean comprar (Casilla titulo){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");  
+        boolean result = false;
+        
+        if(puedeComprar){
+            float precio = titulo.getPrecioCompra();
+            if(puedoGastar(precio)){
+                result = titulo.comprar(this);
+                propiedades.add(titulo);
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " compra la propiedad " + titulo.getNombre());
+                puedeComprar = false;
+            }
+            else{
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " no tiene saldo para comprar la propiedad " + titulo.getNombre());
+            }
+        }  
+        
+        return result;
     }
     
     boolean construirCasa (int ip){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");  
+        boolean result = false;
+        
+        if(existeLaPropiedad(ip)){
+            Casilla propiedad = propiedades.get(ip);
+            boolean puedoEdificarCasa = puedoEdificarCasa(propiedad);
+            float precio = propiedad.getPrecioEdificar();
+            
+            if(puedoGastar(precio) && propiedad.getNumCasas() < getCasasMax())
+                puedoEdificarCasa = true;
+            
+            if(puedoEdificarCasa){
+                result =propiedad.construirCasa(this);
+                paga(precio);
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye casa en la propiedad " + propiedad.getNombre());
+            }
+        }
+       
+        return result;
     }
     
     boolean construirHotel (int ip){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");  
+        boolean result = false;
+        
+        if(existeLaPropiedad(ip)){
+            Casilla propiedad = propiedades.get(ip);
+            boolean puedoEdificarHotel = puedoEdificarhotel(propiedad);
+            float precio = propiedad.getPrecioEdificar();
+            
+            if(puedoGastar(precio)){
+                if(propiedad.getNumHoteles() < getHotelesMax() &&
+                   propiedad.getNumCasas() >= getCasasPorHotel())
+                    puedoEdificarHotel = true;
+            }
+            
+            if(puedoEdificarHotel){
+                result = propiedad.construirHotel(this);
+                propiedad.derruirCasas(CasasPorHotel, this);
+                Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye hotel en la propiedad " + propiedad.getNombre());
+            }
+        }
+        
+        return result;
     }
     
     boolean enBancarrota (){

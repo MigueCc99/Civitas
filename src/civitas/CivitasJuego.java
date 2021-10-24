@@ -37,11 +37,25 @@ public class CivitasJuego {
     }
     
     private void avanzaJugador (){
+        Jugador jugadorActual = getJugadorActual();
+        int posicionActual = jugadorActual.getCasillaActual();
+        int tirada = Dado.getInstance().tirar();
+        int posicionNueva = tablero.nuevaPosicion(posicionActual, tirada);
+        Casilla casilla = tablero.getCasilla(posicionNueva);
         
+        contabilizarPasosPorSalida();
+        
+        jugadorActual.moverACasilla(posicionNueva);
+        
+        casilla.recibeJugador(indiceJugadorActual, jugadores);        
     }
     
     public boolean comprar (){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        Jugador jugadorActual = getJugadorActual();
+        int numCasilla = jugadorActual.getCasillaActual();
+        Casilla casilla = tablero.getCasilla(numCasilla);
+        
+        return jugadorActual.comprar(casilla);
     }
     
     public boolean construirCasa (int ip){
@@ -128,7 +142,22 @@ public class CivitasJuego {
     }
     
     public OperacionesJuego siguientePaso (){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        Jugador jugadorActual = getJugadorActual();
+        OperacionesJuego operacion = gestor.siguienteOperacion(jugadorActual, estado);
+        
+        switch(operacion){
+            case PASAR_TURNO:
+                pasarTurno();
+                siguientePasoCompletado(operacion);
+            break;
+            
+            case AVANZAR:
+                avanzaJugador();
+                siguientePasoCompletado(operacion);
+            break;
+        }
+        
+        return operacion;
     }
     
     public void siguientePasoCompletado (OperacionesJuego operacion){

@@ -87,7 +87,9 @@ public class Casilla {
     }
     
     boolean comprar (Jugador jugador){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");  
+        propietario = jugador;
+        jugador.paga(getPrecioCompra());
+        return true;
     }
     
     boolean construirCasa (Jugador jugador){
@@ -119,15 +121,34 @@ public class Casilla {
     }
     
     void recibeJugador (int iactual, ArrayList<Jugador> todos){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        switch(tipo){
+            case CALLE:
+                recibeJugador_calle(iactual, todos);
+            break;
+            case SORPRESA:
+                recibeJugador_sorpresa(iactual, todos);
+            break;
+            case DESCANSO:
+                informe(iactual, todos);
+            break;
+        }
     }
     
     private void recibeJugador_calle (int iactual, ArrayList<Jugador> todos){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        informe(iactual, todos);
+        
+        Jugador jugador = todos.get(iactual);
+        
+        if(!tienePropietario())
+            jugador.puedeComprarCasilla();
+        else
+            tramitarAlquiler(jugador);
     }
    
     private void recibeJugador_sorpresa (int iactual, ArrayList<Jugador> todos){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        Sorpresa sorpresa = mazo.siguiente();
+        informe(iactual, todos);
+        sorpresa.aplicarAJugador(iactual, todos);
     }
     
     public boolean tienePropietario (){
