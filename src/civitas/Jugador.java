@@ -10,8 +10,8 @@ public class Jugador implements Comparable<Jugador> {
     private static int CasasMax = 4;
     private static int CasasPorHotel = 4;
     private static int HotelesMax = 4;
-    private static float PasoPorSalida = 1000f;
-    private static float SaldoInicial = 50000f;
+    private static float PasoPorSalida = 1000;
+    private static float SaldoInicial = 7500;
     
     private int casillaActual;
     private String nombre;
