@@ -29,12 +29,12 @@ public class Sorpresa {
     
     private void aplicarAJugador_pagarCobrar (int actual, ArrayList<Jugador> todos){
         informe(actual, todos);
-        todos.get(actual).modificaSaldo(valor);
+        todos.get(actual).modificarSaldo(valor);
     }
     
     private void aplicarAJugador_porCasaHotel (int actual, ArrayList<Jugador> todos){
         informe(actual, todos);
-        todos.get(actual).modificaSaldo(valor*todos.get(actual).cantidadCasasHoteles());
+        todos.get(actual).modificarSaldo(valor*todos.get(actual).cantidadCasasHoteles());
     }
     
     private void informe (int actual, ArrayList<Jugador> todos){

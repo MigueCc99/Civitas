@@ -58,7 +58,7 @@ public class Casilla {
         return numCasas + numHoteles;
     }
     
-    String getNombre (){
+    public String getNombre (){
         return nombre;
     }
     
@@ -193,7 +193,7 @@ public class Casilla {
                      "Hoteles: " + numHoteles;
         
         if(tienePropietario())
-            str += ", Propietario: " + propietario;
+            str += ", Propietario: " + propietario.getNombre();
         
         return str;
     }
