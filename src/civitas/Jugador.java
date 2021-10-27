@@ -10,8 +10,8 @@ public class Jugador implements Comparable<Jugador> {
     private static int CasasMax = 4;
     private static int CasasPorHotel = 4;
     private static int HotelesMax = 4;
-    private static float PasoPorSalida = 1000;
-    private static float SaldoInicial = 7500;
+    private static float PasoPorSalida = 1000f;
+    private static float SaldoInicial = 50000f;
     
     private int casillaActual;
     private String nombre;
@@ -21,17 +21,20 @@ public class Jugador implements Comparable<Jugador> {
     private ArrayList<Casilla> propiedades;
     
     Jugador (String nombre){
+        this.casillaActual = 0;
         this.nombre = nombre;
-        this.propiedades = new ArrayList<Casilla>();
         this.puedeComprar = true;
-        this.saldo = 0;
+        this.saldo = SaldoInicial;
+        this.propiedades = new ArrayList<Casilla>();
     }
     
     protected Jugador (Jugador otro){
+        this.casillaActual = this.casillaActual;
         this.nombre = otro.nombre;
-        this.propiedades = otro.propiedades;
         this.puedeComprar = otro.puedeComprar;
         this.saldo = otro.saldo;
+        this.propiedades = otro.propiedades;
+        
     }
     
     int cantidadCasasHoteles (){
@@ -119,19 +122,19 @@ public class Jugador implements Comparable<Jugador> {
         return 0 <= ip && ip <= propiedades.size();
     }
     
-    private int getCasasMax (){
+    private static int getCasasMax (){
         return CasasMax;
     }
     
-    int getCasasPorHotel (){
+    static int getCasasPorHotel (){
         return CasasPorHotel;
     }
     
-    int getCasillaActual (){
+    public int getCasillaActual (){
         return casillaActual;
     }
     
-    private int getHotelesMax (){
+    private static int getHotelesMax (){
         return HotelesMax;
     }
     
@@ -139,11 +142,11 @@ public class Jugador implements Comparable<Jugador> {
         return nombre;
     }
     
-    private float getPremioPasoSalida (){
+    private static float getPremioPasoSalida (){
         return PasoPorSalida;
     }
     
-    protected ArrayList<Casilla> getPropiedades (){
+    public ArrayList<Casilla> getPropiedades (){
         return propiedades;
     }
     
@@ -155,7 +158,7 @@ public class Jugador implements Comparable<Jugador> {
         return saldo;
     }
     
-    boolean modificaSaldo (float cantidad){
+    boolean modificarSaldo (float cantidad){
         saldo += cantidad;
         Diario.getInstance().ocurreEvento("El saldo del jugador " + nombre + " ha sido modificado por una cantidad de " + cantidad);
         return true;
@@ -169,7 +172,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean paga (float cantidad){
-        return modificaSaldo(cantidad*-1);  
+        return modificarSaldo(cantidad*-1);  
     }
     
     boolean pagaAlquiler (float cantidad){
@@ -200,7 +203,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     boolean recibe (float cantidad){
-        return modificaSaldo(cantidad);
+        return modificarSaldo(cantidad);
     }
     
     boolean tieneAlgoQueGestionar (){
@@ -214,10 +217,15 @@ public class Jugador implements Comparable<Jugador> {
                      "Saldo: " + saldo;
         
         if(puedeComprar)
-            str += ", ¿Puede Comprar?: Sí, ";
+            str += ", ¿Puede Comprar?: Sí";
         else
-            str += ", ¿Puede Comprar?: No, ";
+            str += ", ¿Puede Comprar?: No";
                      
+        str += "\nPropiedades del jugador: \n";
+        
+        for (Casilla propiedad: propiedades)
+            str += propiedad.toString() + "\n";
+        
         return str;
     }
     

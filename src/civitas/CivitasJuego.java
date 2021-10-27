@@ -10,8 +10,8 @@ import java.util.Collections;
 public class CivitasJuego {
     private int indiceJugadorActual;
     
-    private ArrayList<Jugador> jugadores;
-    private EstadosJuego estado;
+    private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+    private EstadoJuego estado;
     private MazoSorpresas mazo;
     private Tablero tablero;
     private GestorEstados gestor;
@@ -21,7 +21,7 @@ public class CivitasJuego {
             jugadores.add(new Jugador(nombre));
         
         gestor = new GestorEstados();
-        gestor.estadoInicial();
+        estado = gestor.estadoInicial();
         
         Dado.getInstance().setDebug(debug);
         
@@ -80,19 +80,19 @@ public class CivitasJuego {
     }
     
     public int getIndiceJugadorActual (){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        return indiceJugadorActual;
     }
     
     public Jugador getJugadorActual (){
-        return jugadores.get(indiceJugadorActual);
+        return jugadores.get(getIndiceJugadorActual());
     }
     
     public ArrayList<Jugador> getJugadores (){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        return jugadores;
     }
     
     public Tablero getTablero (){
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        return tablero;
     }
     
     private void inicializaMazoSorpresas (){
@@ -141,9 +141,9 @@ public class CivitasJuego {
         return jugadores;
     }
     
-    public OperacionesJuego siguientePaso (){
+    public OperacionJuego siguientePaso (){
         Jugador jugadorActual = getJugadorActual();
-        OperacionesJuego operacion = gestor.siguienteOperacion(jugadorActual, estado);
+        OperacionJuego operacion = gestor.siguienteOperacion(jugadorActual, estado);
         
         switch(operacion){
             case PASAR_TURNO:
@@ -160,7 +160,7 @@ public class CivitasJuego {
         return operacion;
     }
     
-    public void siguientePasoCompletado (OperacionesJuego operacion){
+    public void siguientePasoCompletado (OperacionJuego operacion){
         estado = gestor.siguienteEstado(getJugadorActual(), estado, operacion);
     }
     

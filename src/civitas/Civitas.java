@@ -36,7 +36,7 @@ public class Civitas {
         
         System.out.println("\nElementos de cada enumerado!!!");
         System.out.println("*********************************************************************************");
-        System.out.println("EstadosJuego: " + EstadosJuego.INICIO_TURNO);
+        System.out.println("EstadosJuego: " + EstadoJuego.INICIO_TURNO);
         System.out.println("TipoCasilla: " + TipoCasilla.CALLE);
         System.out.println("EstadosJuego: " + TipoSorpresa.PAGARCOBRAR);
         

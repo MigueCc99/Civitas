@@ -4,7 +4,7 @@ package civitas;
  *
  * @author miguecc99
  */
-public enum OperacionesJuego {
+public enum OperacionJuego {
     PASAR_TURNO,
     AVANZAR,
     COMPRAR,
