@@ -38,7 +38,7 @@ public class MazoSorpresas {
     
     Sorpresa siguiente (){
         Sorpresa s = new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Sorpresa Por Defecto", 0);
-        if(!barajada && usadas == sorpresas.size()){
+        if(!barajada || usadas == sorpresas.size()){
             if(!debug){
                 shuffle(sorpresas);
             }
@@ -50,6 +50,21 @@ public class MazoSorpresas {
             sorpresas.add(s);
         }
         return s;   
+    }
+    
+    public static void main (String[] args){
+        MazoSorpresas mazo = new MazoSorpresas();
+        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", 500));
+        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por fiesta ilegal!", 1000));
+        
+        System.out.println("Siguiente 1");
+        System.out.println(mazo.siguiente().toString());
+        for(int i=0; i<mazo.sorpresas.size(); i++)
+           System.out.println(mazo.sorpresas.get(i)); 
+        System.out.println("Siguiente 2");
+        System.out.println(mazo.siguiente().toString());
+        for(int i=0; i<mazo.sorpresas.size(); i++)
+           System.out.println(mazo.sorpresas.get(i));
     }
     
 }

@@ -28,8 +28,9 @@ public class Casilla {
         this.precioCompra = 0.0f;
         this.precioEdificar = 0.0f;
         this.precioBaseAlquiler = 0.0f;
-        this.mazo = new MazoSorpresas ();
+        this.mazo = new MazoSorpresas();
         this.propietario = null;
+        this.sorpresa = null;
     }
     
     Casilla (TipoCasilla tipo, String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler){
@@ -114,7 +115,7 @@ public class Casilla {
     
     public boolean esEsteElPropietario (Jugador jugador){
         return propietario == jugador;
-    }
+    } 
     
     void informe (int iactual, ArrayList<Jugador> todos){
         Diario.getInstance().ocurreEvento("El jugador " + todos.get(iactual).getNombre() + " ha caido en la casilla " + this.toString());
