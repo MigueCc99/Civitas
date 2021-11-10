@@ -20,4 +20,11 @@ public class GestionInmobiliaria {
     public int getPropiedad (){
         return propiedad;
     }
+    
+    public static void main (String[] args){
+        GestionInmobiliaria gestionInmobiliaria = new GestionInmobiliaria (OperacionInmobiliaria.CONSTRUIR_CASA, 2);
+        System.out.println("Gestión inmobiliaria: ");
+        System.out.println(gestionInmobiliaria.getOperacion());
+        System.out.println(gestionInmobiliaria.getPropiedad());
+    }
 }

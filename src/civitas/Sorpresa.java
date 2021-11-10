@@ -55,7 +55,7 @@ public class Sorpresa {
         Jugador jugador = new Jugador("Miguel Ángel");
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         jugadores.add(jugador);
-        Sorpresa sorpresaPagarCobrar = new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", 500);
+        Sorpresa sorpresaPagarCobrar = new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", -500);
         
         System.out.println("toString de Jugador");
         System.out.println(jugador.toString());
@@ -64,6 +64,8 @@ public class Sorpresa {
         
         sorpresaPagarCobrar.aplicarAJugador(0, jugadores);
         System.out.println(Diario.getInstance().getEventos().get(0));
-
+        
+        System.out.println("\ntoString de Jugador después de recibir la multa");
+        System.out.println(jugadores.get(0).toString());
     }
 }
