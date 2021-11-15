@@ -37,9 +37,9 @@ public class Controlador {
                         respuesta = vista.comprar();
                         
                         if(respuesta == Respuesta.SI){
-                            juego.comprar();
-                            juego.siguientePasoCompletado(operacionJ);                            
+                            juego.comprar();                           
                         }
+                        juego.siguientePasoCompletado(operacionJ); 
                     break;
                     case GESTIONAR:
                         OperacionInmobiliaria operacionI = vista.elegirOperacion();
