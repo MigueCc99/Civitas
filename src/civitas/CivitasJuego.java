@@ -109,26 +109,25 @@ public class CivitasJuego {
     }
     
     private void inicializaTablero (MazoSorpresas mazo){
-        tablero.añadeCasilla(new Casilla ("Calle San Matías", 15000, 10000, 5000));
-        tablero.añadeCasilla(new Casilla ("Calle Gran Vía", 20000, 12000, 7500));
-        tablero.añadeCasilla(new Casilla ("Calle Santiago Bernabeu", 30000, 13000, 8000));
-        tablero.añadeCasilla(new Casilla ("Calle Periodista Fernando Gómez de la Cruz", 15000, 10000, 5000));
-        tablero.añadeCasilla(new Casilla ("Calle Gonzalo Gallas", 10000, 7000, 5000));
-        tablero.añadeCasilla(new Casilla ("Calle Pedro Antonio", 9000, 4000, 3000));
-        tablero.añadeCasilla(new Casilla ("Calle Ganivet", 20000, 10000, 5000));
-        tablero.añadeCasilla(new Casilla ("Calle Reyes Católicos", 20000, 14000, 8000));
-        tablero.añadeCasilla(new Casilla ("Calle Tragofino", 8000, 5000, 2000));
-        tablero.añadeCasilla(new Casilla ("Calle Duero", 17000, 13000, 2500));
-        tablero.añadeCasilla(new Casilla ("Calle Guadalquivir", 20000, 10000, 5000));
-        tablero.añadeCasilla(new Casilla ("Calle Bomba", 11000, 8000, 3400));
-        tablero.añadeCasilla(new Casilla ("Calle Camino de Ronda", 20000, 10000, 5000));
-        tablero.añadeCasilla(new Casilla ("Calle Real Madrid", 24000, 20000, 12000));
-        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
-        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
-        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
-        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
         tablero.añadeCasilla(new Casilla ("SALIDA"));
+        tablero.añadeCasilla(new Casilla ("Calle San Matías", 1500, 1000, 500));
+        tablero.añadeCasilla(new Casilla ("Calle Gran Vía", 1000, 1000, 750));
+        tablero.añadeCasilla(new Casilla ("Calle Santiago Bernabeu", 4000, 2000, 1500));
+        tablero.añadeCasilla(new Casilla ("Calle Periodista Fernando Gómez de la Cruz", 3000, 1500, 1250));
+        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
+        tablero.añadeCasilla(new Casilla ("Calle Gonzalo Gallas", 2000, 1700, 1500));
+        tablero.añadeCasilla(new Casilla ("Calle Pedro Antonio", 1200, 500, 400));
+        tablero.añadeCasilla(new Casilla ("Calle Ganivet", 4500, 300, 600));
+        tablero.añadeCasilla(new Casilla ("Calle Reyes Católicos", 7000, 1000, 1500));
+        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
+        tablero.añadeCasilla(new Casilla ("Calle Tragofino", 5000, 5000, 2000));
+        tablero.añadeCasilla(new Casilla ("Calle Duero", 1700, 1000, 1200));
         tablero.añadeCasilla(new Casilla ("PARKING"));
+        tablero.añadeCasilla(new Casilla ("Calle Guadalquivir", 3500, 560, 700));
+        tablero.añadeCasilla(new Casilla ("Calle Bomba", 1100, 1000, 900));
+        tablero.añadeCasilla(new Casilla ("Sorpresa!!!", mazo));
+        tablero.añadeCasilla(new Casilla ("Calle Camino de Ronda", 2000, 540, 800));
+        tablero.añadeCasilla(new Casilla ("Calle Real Madrid", 9000, 4000, 1000));
     }
     
     private void pasarTurno (){
