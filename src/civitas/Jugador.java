@@ -18,14 +18,14 @@ public class Jugador implements Comparable<Jugador> {
     private boolean puedeComprar;
     private float saldo;
     
-    private ArrayList<Casilla> propiedades;
+    private ArrayList<CasillaCalle> propiedades;
     
     Jugador (String nombre){
         this.casillaActual = 0;
         this.nombre = nombre;
         this.puedeComprar = true;
         this.saldo = SaldoInicial;
-        this.propiedades = new ArrayList<Casilla>();
+        this.propiedades = new ArrayList<CasillaCalle>();
     }
     
     protected Jugador (Jugador otro){
@@ -39,7 +39,7 @@ public class Jugador implements Comparable<Jugador> {
     
     int cantidadCasasHoteles (){
         int cantidad = 0;
-        for(Casilla propiedad: propiedades){
+        for(CasillaCalle propiedad: propiedades){
             cantidad += propiedad.cantidadCasasHoteles();
         }
         return cantidad;
@@ -50,7 +50,7 @@ public class Jugador implements Comparable<Jugador> {
         return Float.compare(this.saldo, otro.saldo);
     }
     
-    boolean comprar (Casilla titulo){
+    boolean comprar (CasillaCalle titulo){
         boolean result = false;
         
         if(puedeComprar){
@@ -73,7 +73,7 @@ public class Jugador implements Comparable<Jugador> {
         boolean result = false;
         
         if(existeLaPropiedad(ip)){
-            Casilla propiedad = propiedades.get(ip);
+            CasillaCalle propiedad = propiedades.get(ip);
             boolean puedoEdificarCasa = puedoEdificarCasa(propiedad);
             float precio = propiedad.getPrecioEdificar();
             
@@ -81,7 +81,7 @@ public class Jugador implements Comparable<Jugador> {
                 puedoEdificarCasa = true;
             
             if(puedoEdificarCasa){
-                result =propiedad.construirCasa(this);
+                result = propiedad.construirCasa(this);
                 paga(precio);
                 Diario.getInstance().ocurreEvento("El jugador " + nombre + " construye casa en la propiedad " + propiedad.getNombre());
             }
@@ -94,7 +94,7 @@ public class Jugador implements Comparable<Jugador> {
         boolean result = false;
         
         if(existeLaPropiedad(ip)){
-            Casilla propiedad = propiedades.get(ip);
+            CasillaCalle propiedad = propiedades.get(ip);
             boolean puedoEdificarHotel = puedoEdificarhotel(propiedad);
             float precio = propiedad.getPrecioEdificar();
             
@@ -146,7 +146,7 @@ public class Jugador implements Comparable<Jugador> {
         return PasoPorSalida;
     }
     
-    public ArrayList<Casilla> getPropiedades (){
+    public ArrayList<CasillaCalle> getPropiedades (){
         return propiedades;
     }
     
@@ -190,11 +190,11 @@ public class Jugador implements Comparable<Jugador> {
         return puedeComprar;
     }
     
-    private boolean puedoEdificarCasa (Casilla propiedad){
+    private boolean puedoEdificarCasa (CasillaCalle propiedad){
         return puedoGastar(propiedad.getPrecioEdificar()) && propiedad.getNumHoteles() < CasasMax && propiedad.getNumHoteles() >= CasasPorHotel;
     }
     
-    private boolean puedoEdificarhotel (Casilla propiedad){
+    private boolean puedoEdificarhotel (CasillaCalle propiedad){
         return puedoGastar(propiedad.getPrecioEdificar()) && propiedad.getNumHoteles() < HotelesMax && propiedad.getNumCasas() >= CasasPorHotel;  
     }
     
@@ -223,7 +223,7 @@ public class Jugador implements Comparable<Jugador> {
                      
         str += "\nPropiedades del jugador: \n";
         
-        for (Casilla propiedad: propiedades)
+        for (CasillaCalle propiedad: propiedades)
             str += propiedad.toString() + "\n";
         
         return str;

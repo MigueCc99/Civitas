@@ -1,6 +1,7 @@
 package vistaTextualCivitas;
 
 import civitas.Casilla;
+import civitas.CasillaCalle;
 import civitas.CivitasJuego;
 import civitas.Diario;
 import civitas.OperacionJuego;
@@ -121,7 +122,7 @@ public class VistaTextual implements Vista {
 
     @Override
     public int elegirPropiedad() {
-        ArrayList<Casilla> propiedades = juegoModel.getJugadorActual().getPropiedades();
+        ArrayList<CasillaCalle> propiedades = juegoModel.getJugadorActual().getPropiedades();
         ArrayList<String> propiedadesString = new ArrayList<>();
         
         for(Casilla propiedad: propiedades)
