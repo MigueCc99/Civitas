@@ -37,30 +37,31 @@ public class Civitas {
         System.out.println("\nElementos de cada enumerado!!!");
         System.out.println("*********************************************************************************");
         System.out.println("EstadosJuego: " + EstadoJuego.INICIO_TURNO);
-        System.out.println("TipoCasilla: " + TipoCasilla.CALLE);
         System.out.println("EstadosJuego: " + TipoSorpresa.PAGARCOBRAR);
         
-        tablero.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Calle Castellana", 150000, 10000, 15000));
-        tablero.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Calle Alhambra", 250000, 30000, 25000));
-        tablero.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Calle Bulería", 550000, 20000, 30000));
+        tablero.añadeCasilla(new CasillaCalle("Calle Castellana", 150000, 10000, 15000));
+        tablero.añadeCasilla(new CasillaCalle("Calle Alhambra", 250000, 30000, 25000));
+        tablero.añadeCasilla(new CasillaCalle("Calle Bulería", 550000, 20000, 30000));
         
         System.out.println("\nTABLERO!!!");
         System.out.println("*********************************************************************************");
         
-        Casilla calleMasCara = new Casilla(TipoCasilla.CALLE, "Calle Por Defecto", 0, 0, 0);
-        Casilla calleMasBarata = tablero.getCasilla(0);
+        CasillaCalle calleMasCara = new CasillaCalle("Calle Por Defecto", 0, 0, 0);
+        CasillaCalle calleMasBarata = (CasillaCalle)tablero.getCasilla(0);
         int sumaPrecioCalles = 0;
         int precioMedioCalles = 0;
+        CasillaCalle calle;
         
         for(int i=0; i<3; i++){
             System.out.println(tablero.getCasilla(i).toString());
-            if(calleMasCara.getPrecioAlquilerCompleto() < tablero.getCasilla(i).getPrecioAlquilerCompleto())
-                calleMasCara = tablero.getCasilla(i);
+            calle = (CasillaCalle)tablero.getCasilla(i);
+            if(calleMasCara.getPrecioAlquilerCompleto() < calle.getPrecioAlquilerCompleto())
+                calleMasCara = calle;
             
-            if(calleMasBarata.getPrecioAlquilerCompleto() > tablero.getCasilla(i).getPrecioAlquilerCompleto())
-                calleMasBarata = tablero.getCasilla(i);
+            if(calleMasBarata.getPrecioAlquilerCompleto() > calle.getPrecioAlquilerCompleto())
+                calleMasBarata = calle;
             
-            sumaPrecioCalles += tablero.getCasilla(i).getPrecioAlquilerCompleto();            
+            sumaPrecioCalles += calle.getPrecioAlquilerCompleto();            
         }
         precioMedioCalles = sumaPrecioCalles/3;
         
