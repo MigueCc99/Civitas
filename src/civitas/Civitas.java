@@ -37,7 +37,6 @@ public class Civitas {
         System.out.println("\nElementos de cada enumerado!!!");
         System.out.println("*********************************************************************************");
         System.out.println("EstadosJuego: " + EstadoJuego.INICIO_TURNO);
-        System.out.println("EstadosJuego: " + TipoSorpresa.PAGARCOBRAR);
         
         tablero.añadeCasilla(new CasillaCalle("Calle Castellana", 150000, 10000, 15000));
         tablero.añadeCasilla(new CasillaCalle("Calle Alhambra", 250000, 30000, 25000));

@@ -21,9 +21,10 @@ public class CasillaSorpresa extends Casilla{
         this.mazo = mazo;
     }
     
-    private void recibeJugador_sorpresa (int iactual, ArrayList<Jugador> todos){
+    @Override
+    void recibeJugador (int iactual, ArrayList<Jugador> todos){
         sorpresa = mazo.siguiente();
-        informe(iactual, todos);
+        super.recibeJugador(iactual, todos);
         sorpresa.aplicarAJugador(iactual, todos);
     }
     
@@ -36,13 +37,13 @@ public class CasillaSorpresa extends Casilla{
     
     public static void main(String[] args){
         MazoSorpresas mazo = new MazoSorpresas();
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", 500));
+        mazo.alMazo(new SorpresaPagarCobrar("Multa por exceso de velocidad!", 500));
         
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(new Jugador("Miguel Ángel"));
     
         CasillaSorpresa casillaSorpresa = new CasillaSorpresa ("Sorpresa!!!", mazo);
-        casillaSorpresa.recibeJugador_sorpresa(0, jugadores);
+        casillaSorpresa.recibeJugador(0, jugadores);
         
         System.out.println(casillaSorpresa.toString());
     }

@@ -6,38 +6,16 @@ import java.util.ArrayList;
  *
  * @author miguecc99
  */
-public class Sorpresa {
-    private String texto;
-    private int valor;
+public abstract class Sorpresa {
+    protected String texto;
     
-    private TipoSorpresa tipo;
-    
-    Sorpresa (TipoSorpresa tipo, String texto, int valor){
-        this.tipo = tipo;
+    Sorpresa (String texto){
         this.texto = texto;
-        this.valor = valor;
     }
     
-    void aplicarAJugador (int actual, ArrayList<Jugador> todos){
-        if(TipoSorpresa.PAGARCOBRAR == tipo){
-            aplicarAJugador_pagarCobrar(actual, todos);
-        }
-        else if(TipoSorpresa.PORCASAHOTEL == tipo){
-            aplicarAJugador_porCasaHotel(actual, todos);
-        }
-    }
+    abstract void aplicarAJugador (int actual, ArrayList<Jugador> todos);
     
-    private void aplicarAJugador_pagarCobrar (int actual, ArrayList<Jugador> todos){
-        informe(actual, todos);
-        todos.get(actual).modificarSaldo(valor);
-    }
-    
-    private void aplicarAJugador_porCasaHotel (int actual, ArrayList<Jugador> todos){
-        informe(actual, todos);
-        todos.get(actual).modificarSaldo(valor*todos.get(actual).cantidadCasasHoteles());
-    }
-    
-    private void informe (int actual, ArrayList<Jugador> todos){
+    protected void informe (int actual, ArrayList<Jugador> todos){
         Diario.getInstance().ocurreEvento("La sorpresa " + texto + " se ha aplicado al jugador " + todos.get(actual).getNombre());
     }
     
@@ -55,7 +33,7 @@ public class Sorpresa {
         Jugador jugador = new Jugador("Miguel Ángel");
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         jugadores.add(jugador);
-        Sorpresa sorpresaPagarCobrar = new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", -500);
+        Sorpresa sorpresaPagarCobrar = new SorpresaPagarCobrar("Multa por exceso de velocidad!", -500);
         
         System.out.println("toString de Jugador");
         System.out.println(jugador.toString());
