@@ -96,16 +96,16 @@ public class CivitasJuego {
     }
     
     private void inicializaMazoSorpresas (){
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de velocidad!", -500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exibicionismo!", -2000));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Multa por exceso de atractivo!", -1500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Has recibido la lotería de navidad!", 10000));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Has recibido un regalod de un anónimo!", 1500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR, "Has encontrado 500 euros en el suelo!", 500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL, "Pagas 500 euros por cada casa y hotel!", -500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL, "Pagas 1500 euros por cada casa y hotel!!", -1500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL, "Recibes 500 euros por cada casa y hotel!", 500));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL, "Recibes 1500 euros por cada casa y hotel!", 1500));
+        mazo.alMazo(new SorpresaPagarCobrar("Multa por exceso de velocidad!", -500));
+        mazo.alMazo(new SorpresaPagarCobrar("Multa por exibicionismo!", -2000));
+        mazo.alMazo(new SorpresaPagarCobrar("Multa por exceso de atractivo!", -1500));
+        mazo.alMazo(new SorpresaPagarCobrar("Has recibido la lotería de navidad!", 10000));
+        mazo.alMazo(new SorpresaPagarCobrar("Has recibido un regalod de un anónimo!", 1500));
+        mazo.alMazo(new SorpresaPagarCobrar("Has encontrado 500 euros en el suelo!", 500));
+        mazo.alMazo(new SorpresaPorCasaHotel("Pagas 500 euros por cada casa y hotel!", -500));
+        mazo.alMazo(new SorpresaPorCasaHotel("Pagas 1500 euros por cada casa y hotel!!", -1500));
+        mazo.alMazo(new SorpresaPorCasaHotel("Recibes 500 euros por cada casa y hotel!", 500));
+        mazo.alMazo(new SorpresaPorCasaHotel("Recibes 1500 euros por cada casa y hotel!", 1500));
     }
     
     private void inicializaTablero (MazoSorpresas mazo){

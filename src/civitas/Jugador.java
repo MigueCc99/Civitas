@@ -122,7 +122,7 @@ public class Jugador implements Comparable<Jugador> {
         return 0 <= ip && ip <= propiedades.size();
     }
     
-    private static int getCasasMax (){
+    protected int getCasasMax (){
         return CasasMax;
     }
     
@@ -134,7 +134,7 @@ public class Jugador implements Comparable<Jugador> {
         return casillaActual;
     }
     
-    private static int getHotelesMax (){
+    protected int getHotelesMax (){
         return HotelesMax;
     }
     
@@ -208,6 +208,10 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean tieneAlgoQueGestionar (){
         return propiedades.size() > 0;
+    }
+    
+    JugadorEspeculador convertir (){
+        return new JugadorEspeculador(this);
     }
     
     @Override

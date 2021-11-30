@@ -84,10 +84,11 @@ public class CasillaCalle extends Casilla{
     
     public boolean esEsteElPropietario (Jugador jugador){
         return propietario == jugador;
-    } 
+    }
     
-    private void recibeJugador_calle (int iactual, ArrayList<Jugador> todos){
-        informe(iactual, todos);
+    @Override
+    void recibeJugador (int iactual, ArrayList<Jugador> todos){
+        super.recibeJugador(iactual, todos);
         
         Jugador jugador = todos.get(iactual);
         
@@ -124,6 +125,10 @@ public class CasillaCalle extends Casilla{
         }
     }
     
+    public void actualizaPropietarioPorConversión (Jugador propietarioConversion){
+        propietario = propietarioConversion;
+    }
+    
     public String toString(){
         String str = super.toString() +
                      "Precios: Compra: " + precioCompra + ", " +
@@ -140,6 +145,8 @@ public class CasillaCalle extends Casilla{
 
     public static void main(String[] args){
         CasillaCalle casillaCalle = new CasillaCalle ("Calle Pedro Antonio", 1200, 500, 400);
+        
+        CasillaCalle casillaCopia = casillaCalle;
         
         System.out.println(casillaCalle.toString());
     }
