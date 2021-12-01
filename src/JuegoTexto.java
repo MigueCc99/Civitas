@@ -1,5 +1,3 @@
-
-
 import civitas.CivitasJuego;
 import controladorCivitas.Controlador;
 import java.util.ArrayList;

@@ -16,6 +16,6 @@ public class SorpresaConvertirme extends Sorpresa{
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         informe(actual, todos);
         JugadorEspeculador jugadorEspeculador = todos.get(actual).convertir();
-        
+        todos.set(actual, jugadorEspeculador);
     }
 }
