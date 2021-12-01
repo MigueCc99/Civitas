@@ -16,7 +16,7 @@ public class JugadorEspeculador extends Jugador{
     
     @Override
     boolean paga (float cantidad){
-        return modificarSaldo((cantidad*-1)/2);  
+        return super.paga(cantidad/2);  
     }
     
     void actualizaPropiedadesPorConversion (){
@@ -48,10 +48,15 @@ public class JugadorEspeculador extends Jugador{
             2. Creamos un Jugador Copia
         */
         Jugador jugador = new Jugador("Miguel Ángel");
-        JugadorEspeculador jugadorEspeculadorCopia = new JugadorEspeculador(jugador);
-        
-        
-        System.out.println(jugador.toString());
-        System.out.println(jugadorEspeculadorCopia.toString());     
+        JugadorEspeculador jugadorEspeculador = new JugadorEspeculador(jugador);
+             
+        System.out.println("JUGADORES PRINT ANTES DE PAGO:\n" +
+                           "JUGADOR NORMAL: " + jugador.toString() +
+                           "JUGADOR ESPECULADOR: " + jugadorEspeculador.toString());
+        jugador.paga(100);
+        jugadorEspeculador.paga(100);
+        System.out.println("JUGADORES PRINT TRAS EL PAGO:\n" +
+                           "JUGADOR NORMAL: " + jugador.toString() +
+                           "JUGADOR ESPECULADOR: " + jugadorEspeculador.toString());
     }
 }
