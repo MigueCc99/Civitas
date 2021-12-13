@@ -23,7 +23,7 @@ public class Dado {
         random = new Random();
     }
     
-    int tirar (){
+    public int tirar (){
         if(debug)
             ultimoResultado = 1;
         else
@@ -32,12 +32,12 @@ public class Dado {
         return ultimoResultado;
     }
     
-    int quienEmpieza (int n){
+    public int quienEmpieza (int n){
         ultimoResultado = random.nextInt(0,n);
         return ultimoResultado;
     }
     
-    void setDebug (boolean d){
+    public void setDebug (boolean d){
         debug = d;
         if(debug)
             Diario.getInstance().ocurreEvento("Dado en modo debug!!!");
@@ -45,7 +45,11 @@ public class Dado {
             Diario.getInstance().ocurreEvento("Dado en modo normal!!!");
     }
     
-    int getUltimoResultado (){
+    public boolean getDebug (){
+        return debug;
+    }
+    
+    public int getUltimoResultado (){
         return ultimoResultado;
     }
     
