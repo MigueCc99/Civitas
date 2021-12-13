@@ -28,6 +28,10 @@ public class CasillaSorpresa extends Casilla{
         sorpresa.aplicarAJugador(iactual, todos);
     }
     
+    public String getSorpresaText() {
+        return sorpresa.texto;
+    }
+    
     public String toString(){
         String str = super.toString() +
                      sorpresa.toString();
