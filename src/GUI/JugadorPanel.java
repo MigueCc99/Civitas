@@ -1,6 +1,7 @@
 package GUI;
 
 import civitas.Jugador;
+import civitas.JugadorEspeculador;
 
 /**
  *
@@ -17,7 +18,7 @@ public class JugadorPanel extends javax.swing.JPanel {
         this.jugador = jugador;
         this.nombreTextField.setText(jugador.getNombre());
         this.saldoTextField.setText(String.valueOf(jugador.getSaldo()));
-        this.esEspeculadorTextField.setText(String.valueOf(true));
+        this.esEspeculadorTextField.setText(String.valueOf(jugador instanceof JugadorEspeculador));
         this.repaint();
     }
 
