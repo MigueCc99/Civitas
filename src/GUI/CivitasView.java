@@ -1,14 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GUI;
 
+import civitas.Casilla;
 import civitas.CivitasJuego;
+import civitas.Jugador;
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
+import civitas.Tablero;
 import controladorCivitas.Respuesta;
+import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -16,19 +17,38 @@ import javax.swing.JOptionPane;
  */
 public class CivitasView extends javax.swing.JFrame implements Vista{
     private CivitasJuego juego;
+    private Jugador jugadorActual;
+    private Casilla casillaActual;
+    private Tablero tablero;
 
     public CivitasView() {
         initComponents();
+        config();
+    }
+    
+    private void init(){
+        this.jugadorActual = juego.getJugadorActual();
+        this.tablero = juego.getTablero();
+        this.casillaActual = tablero.getCasilla(jugadorActual.getCasillaActual());
+    }
+    
+    private void config(){
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        jugadorPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        casillaPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
     
     void setCivitasJuego(CivitasJuego juego){
         this.juego = juego;
+        init();
         this.setVisible(true);
     }
 
     @Override
     public void actualiza() {
-        jugadorPanel.setJugador(juego.getJugadorActual());
+        jugadorPanel.setJugador(jugadorActual);
+        casillaPanel.setCasilla(casillaActual);
     }
 
     @Override
@@ -69,38 +89,20 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
         titulo = new javax.swing.JLabel();
         jugadorPanel = new GUI.JugadorPanel();
+        casillaPanel = new GUI.CasillaPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         titulo.setText("CivitasView");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jugadorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo)
-                .addGap(18, 18, 18)
-                .addComponent(jugadorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
-        );
+        getContentPane().add(titulo, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jugadorPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(casillaPanel, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.CasillaPanel casillaPanel;
     private GUI.JugadorPanel jugadorPanel;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
