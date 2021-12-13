@@ -1,5 +1,6 @@
 package controladorCivitas;
 
+import GUI.Vista;
 import civitas.CivitasJuego;
 import civitas.GestionInmobiliaria;
 import civitas.OperacionInmobiliaria;
@@ -12,9 +13,9 @@ import vistaTextualCivitas.VistaTextual;
  */
 public class Controlador {
     private CivitasJuego juego;
-    private VistaTextual vista;
+    private Vista vista;
     
-    public Controlador (CivitasJuego juego, VistaTextual vista){
+    public Controlador (CivitasJuego juego, Vista vista){
         this.juego = juego;
         this.vista = vista;
     }
