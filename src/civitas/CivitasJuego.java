@@ -2,6 +2,7 @@ package civitas;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import GUI.Dado;
 
 /**
  *
@@ -134,7 +135,7 @@ public class CivitasJuego {
         indiceJugadorActual = (indiceJugadorActual+1)%jugadores.size();
     }
     
-    private ArrayList<Jugador> ranking(){
+    public ArrayList<Jugador> ranking(){
         jugadores.sort((o1,o2) -> o1.compareTo(o2));
         Collections.reverse(jugadores);
         return jugadores;

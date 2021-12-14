@@ -8,6 +8,7 @@ import civitas.OperacionJuego;
 import civitas.Tablero;
 import controladorCivitas.Respuesta;
 import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
@@ -44,11 +45,36 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
         init();
         this.setVisible(true);
     }
+    
+    private void ocultaRanking() {
+        this.rankingLabel.setVisible(false);
+        this.rankingTextField.setVisible(false);
+    }
+    
+    private void muestraRanking() {
+        ArrayList<Jugador> rankingJugadores = juego.ranking();
+        String ranking = "";
+        
+        for(int i = 0; i < rankingJugadores.size(); i++)
+            ranking += i+1 + " " + rankingJugadores.get(i) + "\n";
+        
+        this.rankingTextField.setText(ranking);
+        this.rankingLabel.setVisible(true);
+        this.rankingTextField.setVisible(true);
+    }
 
     @Override
     public void actualiza() {
         jugadorPanel.setJugador(jugadorActual);
         casillaPanel.setCasilla(casillaActual);
+        
+        ocultaRanking();
+        
+        if(juego.finalDelJuego()){
+            muestraRanking();
+            this.repaint();
+            this.revalidate();
+        } 
     }
 
     @Override
@@ -75,12 +101,17 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public void mostrarSiguienteOperacion(OperacionJuego operación) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        siguienteOperacionTextField.setText(operación.toString());
+        if(operación.equals(OperacionJuego.AVANZAR)){
+            Dado.getInstance();
+        }
+        
+        this.repaint();
     }
 
     @Override
     public void mostrarEventos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Eventos");
     }
 
     @SuppressWarnings("unchecked")
@@ -90,20 +121,60 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
         titulo = new javax.swing.JLabel();
         jugadorPanel = new GUI.JugadorPanel();
         casillaPanel = new GUI.CasillaPanel();
+        jPanel1 = new javax.swing.JPanel();
+        siguienteOperacionLabel = new javax.swing.JLabel();
+        siguienteOperacionTextField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        rankingLabel = new javax.swing.JLabel();
+        rankingTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo.setText("CivitasView");
-        getContentPane().add(titulo, java.awt.BorderLayout.PAGE_START);
-        getContentPane().add(jugadorPanel, java.awt.BorderLayout.CENTER);
-        getContentPane().add(casillaPanel, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 929, -1));
+        getContentPane().add(jugadorPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 929, 220));
+        getContentPane().add(casillaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 361, 929, -1));
+
+        siguienteOperacionLabel.setText("Siguiente Operacion");
+        jPanel1.add(siguienteOperacionLabel);
+
+        siguienteOperacionTextField.setEditable(false);
+        siguienteOperacionTextField.setText("sigOperacion");
+        siguienteOperacionTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteOperacionTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(siguienteOperacionTextField);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 930, 40));
+
+        rankingLabel.setText("Ranking");
+        jPanel2.add(rankingLabel);
+
+        rankingTextField.setEditable(false);
+        rankingTextField.setText("r");
+        jPanel2.add(rankingTextField);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 930, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void siguienteOperacionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteOperacionTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_siguienteOperacionTextFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.CasillaPanel casillaPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private GUI.JugadorPanel jugadorPanel;
+    private javax.swing.JLabel rankingLabel;
+    private javax.swing.JTextField rankingTextField;
+    private javax.swing.JLabel siguienteOperacionLabel;
+    private javax.swing.JTextField siguienteOperacionTextField;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

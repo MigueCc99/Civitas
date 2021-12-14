@@ -20,7 +20,7 @@ public class JugadorPanel extends javax.swing.JPanel {
         this.jugador = jugador;
         this.nombreTextField.setText(jugador.getNombre());
         this.saldoTextField.setText(String.valueOf(jugador.getSaldo()));
-        this.esEspeculadorTextField.setText(String.valueOf(jugador instanceof JugadorEspeculador));
+        this.esEspeculadorTextField.setText(Boolean.toString(jugador.isEspeculador()));
         rellenaPropiedades(jugador.getPropiedades());
         this.repaint();
         this.revalidate();
