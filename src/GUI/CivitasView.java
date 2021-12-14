@@ -2,6 +2,7 @@ package GUI;
 
 import civitas.Casilla;
 import civitas.CivitasJuego;
+import civitas.Diario;
 import civitas.Jugador;
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
@@ -21,6 +22,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
     private Jugador jugadorActual;
     private Casilla casillaActual;
     private Tablero tablero;
+    
+    private DiarioDialog diarioD;
 
     public CivitasView() {
         initComponents();
@@ -111,7 +114,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public void mostrarEventos() {
-        System.out.println("Eventos");
+        if(!Diario.getInstance().getEventos().isEmpty())
+            diarioD = new DiarioDialog(this);  // crea la ventana del diario
     }
 
     @SuppressWarnings("unchecked")
