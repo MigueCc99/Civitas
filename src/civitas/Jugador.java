@@ -37,6 +37,10 @@ public class Jugador implements Comparable<Jugador> {
         
     }
     
+    public boolean isEspeculador (){
+        return this instanceof JugadorEspeculador;
+    }
+    
     int cantidadCasasHoteles (){
         int cantidad = 0;
         for(CasillaCalle propiedad: propiedades){

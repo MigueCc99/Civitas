@@ -3,8 +3,10 @@ package controladorCivitas;
 import GUI.Vista;
 import civitas.CivitasJuego;
 import civitas.GestionInmobiliaria;
+import civitas.Jugador;
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
+import java.util.ArrayList;
 import vistaTextualCivitas.VistaTextual;
 
 /**
@@ -61,7 +63,7 @@ public class Controlador {
                     break;
                 }
             }            
-            //ArrayList<Jugador> jugadoresRanking = juego.ranking();
+            ArrayList<Jugador> jugadoresRanking = juego.ranking();
             vista.actualiza();
         }
     }
