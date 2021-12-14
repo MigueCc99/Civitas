@@ -89,7 +89,19 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public Respuesta comprar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int opcion = 1-JOptionPane.showConfirmDialog(null, "¿Quieres comprar la calle actual?", "Compra", JOptionPane.YES_NO_OPTION);
+        Respuesta respuesta = Respuesta.NO;
+        
+        switch(opcion){
+            case 0:
+                respuesta = Respuesta.NO;
+            break;
+            case 1:
+                respuesta = Respuesta.SI;
+            break;
+        }
+        
+        return respuesta;
     }
 
     @Override
