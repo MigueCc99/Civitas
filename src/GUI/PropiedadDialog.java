@@ -16,7 +16,6 @@ public class PropiedadDialog extends javax.swing.JDialog {
     private int propiedadAGestionar;
     
     private void init() {
-        propiedadButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         propiedadLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         propiedadesAGestionarList.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
@@ -28,10 +27,12 @@ public class PropiedadDialog extends javax.swing.JDialog {
         init();
         this.jugadorActual = jugadorActual;
         this.propiedadAGestionar = 0;
-    }
-
-    public void setPropiedadButtonText(String text) {
-        propiedadButton.setText(text);
+        
+        generarListaPropiedadesAGestionar();
+        
+        this.setVisible(true);
+        repaint();
+        revalidate();
     }
     
     public int getPropiedad() {
@@ -41,10 +42,9 @@ public class PropiedadDialog extends javax.swing.JDialog {
     private void generarListaPropiedadesAGestionar() {
         DefaultListModel propiedadesAGestionar = new DefaultListModel<>();    // datos para la lista
         ArrayList<CasillaCalle> propiedades = jugadorActual.getPropiedades();
-        ArrayList<String> propiedadesString = new ArrayList<>();
         
         for(Casilla propiedad: propiedades)
-            propiedadesString.add(propiedad.getNombre());
+            propiedadesAGestionar.addElement(propiedad.getNombre());
         
         propiedadesAGestionarList.setModel(propiedadesAGestionar);
     }
@@ -54,15 +54,12 @@ public class PropiedadDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         propiedadLabel = new javax.swing.JLabel();
-        propiedadButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         propiedadesAGestionarList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         propiedadLabel.setText("Propiedad a Gestionar");
-
-        propiedadButton.setText("Listo");
 
         propiedadesAGestionarList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -86,9 +83,6 @@ public class PropiedadDialog extends javax.swing.JDialog {
                         .addGap(15, 15, 15)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(propiedadButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(propiedadLabel)))
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -96,13 +90,11 @@ public class PropiedadDialog extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(propiedadLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(propiedadButton)
-                .addGap(23, 23, 23))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -116,7 +108,6 @@ public class PropiedadDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton propiedadButton;
     private javax.swing.JLabel propiedadLabel;
     private javax.swing.JList<String> propiedadesAGestionarList;
     // End of variables declaration//GEN-END:variables

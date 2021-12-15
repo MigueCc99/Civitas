@@ -27,7 +27,7 @@ public class GestionarDialog extends javax.swing.JDialog {
         
         generarListaGestionesInmobiliarias();
         
-        this.setVisible(true); //la ventana se pone visible cuando hay eventos que mostrar
+        this.setVisible(true); //la ventana se pone visible cuando hay que gestionar
         repaint();
         revalidate();
     }
