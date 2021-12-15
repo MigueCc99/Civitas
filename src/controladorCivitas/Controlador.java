@@ -1,6 +1,7 @@
 package controladorCivitas;
 
 import GUI.Vista;
+import civitas.CasillaCalle;
 import civitas.CivitasJuego;
 import civitas.GestionInmobiliaria;
 import civitas.Jugador;
@@ -65,7 +66,7 @@ public class Controlador {
 */
                 }
             }            
-            ArrayList<Jugador> jugadoresRanking = juego.ranking();
+            //ArrayList<Jugador> jugadoresRanking = juego.ranking();
             vista.actualiza();
         }
     }
