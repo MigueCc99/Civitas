@@ -26,6 +26,7 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
     
     private DiarioDialog diarioD;
     private GestionarDialog gestionarD;
+    private PropiedadDialog propiedadD;
 
     public CivitasView() {
         initComponents();
@@ -129,7 +130,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public int elegirPropiedad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        propiedadD = new PropiedadDialog(this, juego.getJugadorActual());
+        return propiedadD.getPropiedad();
     }
 
     @Override
@@ -167,8 +169,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
         titulo.setText("CivitasView");
         getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 929, -1));
-        getContentPane().add(jugadorPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 929, 220));
-        getContentPane().add(casillaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 361, 929, -1));
+        getContentPane().add(jugadorPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 929, 180));
+        getContentPane().add(casillaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 929, -1));
 
         siguienteOperacionLabel.setText("Siguiente Operacion");
         jPanel1.add(siguienteOperacionLabel);
@@ -191,7 +193,7 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
         rankingTextField.setText("r");
         jPanel2.add(rankingTextField);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 930, 80));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 930, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -3,6 +3,7 @@ package GUI;
 import civitas.CasillaCalle;
 import civitas.Jugador;
 import civitas.JugadorEspeculador;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
