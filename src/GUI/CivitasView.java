@@ -92,8 +92,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public Respuesta comprar() {
+        Respuesta respuesta = null;
         int opcion = 1-JOptionPane.showConfirmDialog(null, "¿Quieres comprar la calle actual?", "Compra", JOptionPane.YES_NO_OPTION);
-        Respuesta respuesta = Respuesta.NO;
         
         switch(opcion){
             case 0:
