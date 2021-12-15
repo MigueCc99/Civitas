@@ -33,10 +33,10 @@ public class CasillaPanel extends javax.swing.JPanel {
     
     private void setCasillaCalle(CasillaCalle casilla) {
             this.precioCompraTextField.setText(String.valueOf(casilla.getPrecioCompra()));
-            this.precioEdificarTextField.setText(String.valueOf(casilla.getPrecioCompra()));
-            this.alquilerBaseTextField.setText(String.valueOf(casilla.getPrecioCompra()));
-            this.numCasasTextField.setText(String.valueOf(casilla.getPrecioCompra()));
-            this.numHotelesTextField.setText(String.valueOf(casilla.getPrecioCompra()));
+            this.precioEdificarTextField.setText(String.valueOf(casilla.getPrecioEdificar()));
+            this.alquilerBaseTextField.setText(String.valueOf(casilla.getPrecioBaseAlquiler()));
+            this.numCasasTextField.setText(String.valueOf(casilla.getNumCasas()));
+            this.numHotelesTextField.setText(String.valueOf(casilla.getNumHoteles()));
     }
     
     private void setCasillaSorpresa(CasillaSorpresa casilla) {

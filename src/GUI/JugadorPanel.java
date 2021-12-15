@@ -46,6 +46,7 @@ public class JugadorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jugadorPanel = new javax.swing.JPanel();
         nombreLabel = new javax.swing.JLabel();
         nombreTextField = new javax.swing.JTextField();
         saldoLabel = new javax.swing.JLabel();
@@ -55,7 +56,7 @@ public class JugadorPanel extends javax.swing.JPanel {
         propiedadesPanel = new javax.swing.JPanel();
 
         nombreLabel.setText("Nombre");
-        add(nombreLabel);
+        jugadorPanel.add(nombreLabel);
 
         nombreTextField.setEditable(false);
         nombreTextField.setText("nombre");
@@ -64,22 +65,36 @@ public class JugadorPanel extends javax.swing.JPanel {
                 nombreTextFieldActionPerformed(evt);
             }
         });
-        add(nombreTextField);
+        jugadorPanel.add(nombreTextField);
 
         saldoLabel.setText("Saldo");
-        add(saldoLabel);
+        jugadorPanel.add(saldoLabel);
 
         saldoTextField.setEditable(false);
         saldoTextField.setText("saldo");
-        add(saldoTextField);
+        jugadorPanel.add(saldoTextField);
 
         esEspeculadorLabel.setText("¿Es especulador?");
-        add(esEspeculadorLabel);
+        jugadorPanel.add(esEspeculadorLabel);
 
         esEspeculadorTextField.setEditable(false);
         esEspeculadorTextField.setText("especulador");
-        add(esEspeculadorTextField);
-        add(propiedadesPanel);
+        jugadorPanel.add(esEspeculadorTextField);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jugadorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+            .addComponent(propiedadesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jugadorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propiedadesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextFieldActionPerformed
@@ -90,6 +105,7 @@ public class JugadorPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel esEspeculadorLabel;
     private javax.swing.JTextField esEspeculadorTextField;
+    private javax.swing.JPanel jugadorPanel;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField nombreTextField;
     private javax.swing.JPanel propiedadesPanel;
