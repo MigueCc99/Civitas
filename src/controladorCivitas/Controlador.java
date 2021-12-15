@@ -44,6 +44,7 @@ public class Controlador {
                         }
                         juego.siguientePasoCompletado(operacionJ); 
                     break;
+                    /*
                     case GESTIONAR:
                         OperacionInmobiliaria operacionI = vista.elegirOperacion();
                         int propiedad = vista.elegirPropiedad();
@@ -61,6 +62,7 @@ public class Controlador {
                             break;     
                         }
                     break;
+*/
                 }
             }            
             ArrayList<Jugador> jugadoresRanking = juego.ranking();

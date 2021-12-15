@@ -10,6 +10,7 @@ import civitas.Tablero;
 import controladorCivitas.Respuesta;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
@@ -24,15 +25,15 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
     private Tablero tablero;
     
     private DiarioDialog diarioD;
+    private GestionarDialog gestionarD;
 
     public CivitasView() {
         initComponents();
         config();
     }
     
-    private void init(){
+    private void actualizarActual(){
         this.jugadorActual = juego.getJugadorActual();
-        this.tablero = juego.getTablero();
         this.casillaActual = tablero.getCasilla(jugadorActual.getCasillaActual());
     }
     
@@ -45,7 +46,8 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
     
     void setCivitasJuego(CivitasJuego juego){
         this.juego = juego;
-        init();
+        this.tablero = juego.getTablero();
+        actualizarActual();
         this.setVisible(true);
     }
     
@@ -68,6 +70,7 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public void actualiza() {
+        actualizarActual();
         jugadorPanel.setJugador(jugadorActual);
         casillaPanel.setCasilla(casillaActual);
         
@@ -106,7 +109,22 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
 
     @Override
     public OperacionInmobiliaria elegirOperacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        OperacionInmobiliaria operacion = null;
+        gestionarD = new GestionarDialog(this);    
+
+        switch(gestionarD.getGestion()){
+            case 0:
+                operacion = OperacionInmobiliaria.CONSTRUIR_CASA;
+            break;
+            case 1:
+                operacion = OperacionInmobiliaria.CONSTRUIR_HOTEL;
+            break; 
+            case 2:
+                operacion = OperacionInmobiliaria.TERMINAR;
+            break;
+        }    
+        
+        return operacion;
     }
 
     @Override
